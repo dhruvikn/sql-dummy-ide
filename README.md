@@ -1,3 +1,12 @@
+# SQL Dummy IDE
+
+## Inspirations
+
+- [SQL Editor by Martin Rariga on Dribbble](https://dribbble.com/shots/20127080-SQL-Editor)
+- [Build your audience with an SQL query by Rory Colsell for Vero on Dribbble](https://dribbble.com/shots/20127080-SQL-Editor)
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
