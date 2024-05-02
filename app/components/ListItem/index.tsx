@@ -5,6 +5,7 @@ type ListItemProps = {
   label: string;
   handleClick: () => void;
   iconType?: 'table' | 'query';
+  isActive?: boolean;
 };
 
 const TableIcon = () => {
@@ -38,7 +39,7 @@ const QueryIcon = () => {
 };
 
 export const ListItem = (props: ListItemProps) => {
-  const { label, handleClick, iconType } = props;
+  const { label, handleClick, iconType, isActive } = props;
 
   const getIconType = () => {
     if (iconType === 'table') {
@@ -52,7 +53,15 @@ export const ListItem = (props: ListItemProps) => {
 
   return (
     <>
-      <li className={styles['list-item']} onClick={handleClick}>
+      <li
+        className={classNames({
+          [styles['list-item']]: true,
+          [styles['is-active']]: isActive
+        })}
+        onClick={handleClick}
+        role="button"
+        tabIndex={1}
+      >
         {getIconType()}
         <span className={styles['list-item--text']}>{label}</span>
       </li>

@@ -14,7 +14,13 @@
   margin-bottom: 0.5rem;
 }
 
-.list-item:hover {
+.list-item:not(:last-of-type) {
+  margin-bottom: 4px;
+}
+
+.list-item:hover,
+.list-item:focus,
+.list-item.is-active {
   background-color: rgb(var(--color-fg-1));
 }
 

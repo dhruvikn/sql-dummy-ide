@@ -2,6 +2,7 @@
 
 import styles from './style.module.css';
 
+import { useState } from 'react';
 import { useLocalStorage } from '@uidotdev/usehooks';
 
 import { DEFAULT_QUERY, SAMPLE_TABLE_NAMES, SAVED_QUERIES } from '@/app/helpers/constants';
@@ -12,14 +13,17 @@ export const Sidebar = () => {
   const [gridData, setGridData] = useLocalStorage<any[]>('gridData');
   const [isViewerLoading, setIsViewerLoading] = useLocalStorage<boolean>('isViewerLoading');
   const [queryData, setQueryData] = useLocalStorage<string>('queryData');
+  const [activeItem, setActiveItem] = useState<string>();
 
   const handleTableNameClick = (tableName: SampleTableNamesType) => {
     runQuery(tableName, setGridData, setIsViewerLoading);
     setQueryData(DEFAULT_QUERY(tableName));
+    setActiveItem(tableName);
   };
 
-  const handleQueryClick = (query: string) => {
-    setQueryData(query);
+  const handleQueryClick = (sqlQuery: { name: string; query: string }) => {
+    setQueryData(sqlQuery.query);
+    setActiveItem(sqlQuery.name);
     setGridData([]);
   };
 
@@ -34,8 +38,9 @@ export const Sidebar = () => {
               <ListItem
                 key={sqlQuery.name}
                 label={sqlQuery.name}
-                handleClick={() => handleQueryClick(sqlQuery.query)}
+                handleClick={() => handleQueryClick(sqlQuery)}
                 iconType="query"
+                isActive={activeItem === sqlQuery.name}
               />
             );
           })}
@@ -51,6 +56,7 @@ export const Sidebar = () => {
                 label={tableName}
                 handleClick={() => handleTableNameClick(tableName)}
                 iconType="table"
+                isActive={activeItem === tableName}
               />
             );
           })}

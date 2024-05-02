@@ -60,7 +60,11 @@ export const Viewer = (props: ViewerProps) => {
           'd-flex items-center content-center': true
         })}
       >
-        <h3 className="text-center">Nothing to show here.</h3>
+        <p className="text-center">
+          Nothing to show here at the moment.
+          <br />
+          Select a table or run a query to get started.
+        </p>
       </div>
     );
   }
