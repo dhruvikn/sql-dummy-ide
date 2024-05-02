@@ -1,0 +1,28 @@
+.button {
+  border: none;
+  padding: 0.25rem 0.75rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: var(--font-weight-bold);
+  transition: 0.3s ease-out;
+  background-color: rgb(var(--color-primary));
+  color: rgb(var(--color-white));
+}
+
+.button:not(:disabled):hover {
+  transform: translateY(-2px);
+  filter: brightness(85%);
+}
+
+.button:disabled {
+  cursor: wait;
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: rgb(var(--color-primary));
+  border: 2px solid rgb(var(--color-primary));
+}
