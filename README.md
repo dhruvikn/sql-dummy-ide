@@ -44,7 +44,7 @@ After some more thinking and organising, I decided to go with a more minimalisti
 ## Reports
 
 - [Lighthouse report - 3 May, 2024](./public/reports/lighthouse-report-3-may-2024.pdf)
-- [GT Metrix report - 3 May, 2024](./package-lock.json/reports/gt-metrix-3-may-2024.pdf)
+- [GT Metrix report - 3 May, 2024](./public/reports/gt-metrix-3-may-2024.pdf)
 
 ## Development
 
