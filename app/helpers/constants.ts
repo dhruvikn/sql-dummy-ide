@@ -1,3 +1,5 @@
+import { SampleDataType } from './utils';
+
 const QUERY_1 = `CREATE TABLE dbo.EmployeePhoto
 (
     EmployeeId INT NOT NULL PRIMARY KEY,
@@ -53,3 +55,19 @@ OPTION (HASH GROUP, FAST 10);
 `;
 
 export const SAVED_QUERIES = [QUERY_1];
+export const SAMPLE_DATA_URL = (type: SampleDataType) => {
+  return `https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/csv/${type}.csv`;
+};
+export const SampleDataTypes = [
+  'categories',
+  'customers',
+  'employee_territories',
+  'employees',
+  'order_details',
+  'orders',
+  'products',
+  'regions',
+  'shippers',
+  'suppliers',
+  'territories'
+] as const;

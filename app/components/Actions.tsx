@@ -4,6 +4,7 @@ import { AgGridReact } from 'ag-grid-react';
 import styles from '../styles/actions.module.css';
 import { Button } from './Button';
 import { useCallback, useState } from 'react';
+import { fetchSampleData } from '../helpers/utils';
 
 type ActionsProps = {
   gridRef: React.RefObject<AgGridReact>;
@@ -15,12 +16,12 @@ export const Actions = (props: ActionsProps) => {
   const [isRunningQuery, setIsRunningQuery] = useState<boolean>(false);
   const [isDownloadingCSV, setIsDownloadingCSV] = useState<boolean>(false);
 
-  const runQuery = () => {
+  const runQuery = async () => {
     setIsRunningQuery(true);
 
-    setTimeout(() => {
-      setIsRunningQuery(false);
-    }, 2000);
+    const data = await fetchSampleData('random');
+
+    setIsRunningQuery(false);
   };
 
   const handleDownload = useCallback(() => {
