@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './style.module.css';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { AgGridReact } from 'ag-grid-react';
 import { useLocalStorage } from '@uidotdev/usehooks';
@@ -29,6 +29,26 @@ export const Actions = (props: ActionsProps) => {
       setIsDownloadingCSV(false);
     }, 1000);
   }, [gridRef]);
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.metaKey && event.key === 'Enter') {
+        runQuery('random', setGridData, state => {
+          setIsRunningQuery(state);
+          setIsViewerLoading(state);
+        });
+      }
+    },
+    [setGridData, setIsViewerLoading]
+  );
+
+  useEffect(() => {
+    window && window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window && window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   return (
     <>

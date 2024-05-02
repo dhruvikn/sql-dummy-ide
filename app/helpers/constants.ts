@@ -137,6 +137,10 @@ WHERE
 `
 };
 
+export const DEFAULT_QUERY = (type: SampleTableNamesType) => {
+  return `SELECT * FROM ${type}`;
+};
+
 export const SAVED_QUERIES = [QUERY_1, QUERY_2, QUERY_3, QUERY_4];
 export const SAMPLE_DATA_URL = (type: SampleTableNamesType) => {
   return `https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/csv/${type}.csv`;

@@ -22,9 +22,10 @@ export const Viewer = (props: ViewerProps) => {
   const [colDefs, setColDefs] = useState<any[]>();
 
   useEffect(() => {
-    if (gridData?.length) {
-      setIsViewerLoading(true);
+    setIsViewerLoading(true);
+    setRowData(gridData);
 
+    if (gridData?.length) {
       const columns = Object.keys(gridData[0]).map(col => {
         return {
           field: col,
@@ -33,9 +34,9 @@ export const Viewer = (props: ViewerProps) => {
       });
 
       setColDefs(columns);
-      setRowData(gridData);
-      setIsViewerLoading(false);
     }
+
+    setIsViewerLoading(false);
   }, [setGridData]);
 
   if (isViewerLoading) {

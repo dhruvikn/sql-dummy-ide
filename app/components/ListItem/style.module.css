@@ -20,8 +20,14 @@
 
 .list-item--icon {
   display: inline-flex;
-  width: 1rem;
+  align-items: center;
+  justify-content: center;
   margin-right: 0.5rem;
+}
+
+.list-item--icon svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .list-item--icon.icon--table {
