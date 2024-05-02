@@ -4,4 +4,24 @@
   padding: 1rem;
   min-width: 300px;
   height: calc(100vh - var(--header-height));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-heading {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: rgb(var(--color-fg-2));
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 2px;
+}
+
+.sidebar-heading:not(:first-of-type) {
+  margin-top: 1rem;
 }

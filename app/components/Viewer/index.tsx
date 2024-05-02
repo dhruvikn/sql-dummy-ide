@@ -16,12 +16,15 @@ type ViewerProps = {
 export const Viewer = (props: ViewerProps) => {
   const { gridRef } = props;
   const [gridData, setGridData] = useLocalStorage<any[]>('gridData');
+  const [isViewerLoading, setIsViewerLoading] = useLocalStorage<boolean>('isViewerLoading');
 
   const [rowData, setRowData] = useState<any[]>();
   const [colDefs, setColDefs] = useState<any[]>();
 
   useEffect(() => {
     if (gridData?.length) {
+      setIsViewerLoading(true);
+
       const columns = Object.keys(gridData[0]).map(col => {
         return {
           field: col,
@@ -31,8 +34,22 @@ export const Viewer = (props: ViewerProps) => {
 
       setColDefs(columns);
       setRowData(gridData);
+      setIsViewerLoading(false);
     }
   }, [setGridData]);
+
+  if (isViewerLoading) {
+    return (
+      <div
+        className={classNames({
+          [styles['viewer-container']]: true,
+          'd-flex items-center content-center text-center': true
+        })}
+      >
+        <div className="loader"></div>
+      </div>
+    );
+  }
 
   if (!rowData?.length || !colDefs?.length) {
     return (

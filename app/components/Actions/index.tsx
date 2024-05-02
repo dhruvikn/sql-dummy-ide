@@ -18,7 +18,8 @@ export const Actions = (props: ActionsProps) => {
 
   const [isRunningQuery, setIsRunningQuery] = useState<boolean>(false);
   const [isDownloadingCSV, setIsDownloadingCSV] = useState<boolean>(false);
-  const [_, setGridData] = useLocalStorage<any[]>('gridData');
+  const [gridData, setGridData] = useLocalStorage<any[]>('gridData');
+  const [isViewerLoading, setIsViewerLoading] = useLocalStorage<boolean>('isViewerLoading');
 
   const handleDownload = useCallback(() => {
     setIsDownloadingCSV(true);
@@ -27,7 +28,7 @@ export const Actions = (props: ActionsProps) => {
     setTimeout(() => {
       setIsDownloadingCSV(false);
     }, 1000);
-  }, []);
+  }, [gridRef]);
 
   return (
     <>
@@ -36,7 +37,12 @@ export const Actions = (props: ActionsProps) => {
           type="primary"
           label="Run query"
           isLoading={isRunningQuery}
-          onClick={() => runQuery(setGridData, setIsRunningQuery)}
+          onClick={() => {
+            runQuery('random', setGridData, state => {
+              setIsRunningQuery(state);
+              setIsViewerLoading(state);
+            });
+          }}
           subText="⌘ + Enter"
         />
 
