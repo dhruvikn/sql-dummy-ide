@@ -1,14 +1,25 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import CodeMirror, { EditorView } from '@uiw/react-codemirror';
-import type { ViewUpdate } from '@uiw/react-codemirror';
-import { sql } from '@codemirror/lang-sql';
 import styles from '../styles/editor.module.css';
+import CodeMirror, { EditorView } from '@uiw/react-codemirror';
+import { sql } from '@codemirror/lang-sql';
 import { githubLight } from '@uiw/codemirror-theme-github';
 import { SAVED_QUERIES } from '../helpers/constants';
+import { Fira_Mono } from 'next/font/google';
+
+const monoFont = Fira_Mono({ subsets: ['latin'], weight: '500' });
+
+console.log(monoFont);
 
 const styleTheme = EditorView.baseTheme({
+  '*': {
+    fontFamily: `${monoFont.style.fontFamily}, sans-serif !important`,
+    '-webkit-font-smoothing': 'antialiased',
+    '-moz-osx-font-smoothing': 'grayscale',
+    'text-rendering': 'optimizeLegibility',
+    fontSize: '0.9rem'
+  },
   '&.cm-editor.cm-focused': {
     outline: '2px solid rgb(33, 53, 155, 0.75)'
   }
@@ -17,7 +28,7 @@ const styleTheme = EditorView.baseTheme({
 export const Editor = () => {
   const [value, setValue] = useState<string>(SAVED_QUERIES[0]);
 
-  const onChange = useCallback((value: string, viewUpdate: ViewUpdate) => {
+  const onChange = useCallback((value: string) => {
     setValue(value);
   }, []);
 

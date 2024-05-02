@@ -2,6 +2,6 @@
   background-color: rgb(var(--color-bg));
   border-right: 2px solid rgb(var(--color-fg-1));
   padding: 1rem;
-  width: 300px;
+  min-width: 300px;
   height: calc(100vh - var(--header-height));
 }
