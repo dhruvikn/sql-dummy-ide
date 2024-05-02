@@ -1,5 +1,4 @@
 .editor-container {
   background-color: rgb(var(--color-white));
-  padding: 1rem;
   height: var(--editor-height);
 }
