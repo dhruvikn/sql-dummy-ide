@@ -11,6 +11,7 @@ import { Actions } from '@/app/components/Actions';
 import { Viewer } from '@/app/components/Viewer';
 
 import type { AgGridReact } from 'ag-grid-react';
+import { ClientOnly } from './helpers/ClientOnly';
 
 export default function Home() {
   const gridRef = useRef<AgGridReact>(null);
@@ -18,12 +19,24 @@ export default function Home() {
   return (
     <main>
       <Header />
+
       <BodyContainer>
-        <Sidebar />
+        <ClientOnly>
+          <Sidebar />
+        </ClientOnly>
+
         <IDE>
-          <Editor />
-          <Actions gridRef={gridRef} />
-          <Viewer gridRef={gridRef} />
+          <ClientOnly>
+            <Editor />
+          </ClientOnly>
+
+          <ClientOnly>
+            <Actions gridRef={gridRef} />
+          </ClientOnly>
+
+          <ClientOnly>
+            <Viewer gridRef={gridRef} />
+          </ClientOnly>
         </IDE>
       </BodyContainer>
     </main>
