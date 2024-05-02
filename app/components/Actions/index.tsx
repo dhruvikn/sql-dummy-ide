@@ -1,11 +1,13 @@
 'use client';
 
-import styles from '../styles/actions.module.css';
-import { AgGridReact } from 'ag-grid-react';
-import { Button } from './Button';
+import styles from './style.module.css';
 import { useCallback, useState } from 'react';
-import { runQuery } from '../helpers/utils';
+
+import { AgGridReact } from 'ag-grid-react';
 import { useLocalStorage } from '@uidotdev/usehooks';
+
+import { Button } from '@/app/components/Button';
+import { runQuery } from '@/app/helpers/utils';
 
 type ActionsProps = {
   gridRef: React.RefObject<AgGridReact>;

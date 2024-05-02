@@ -1,5 +1,5 @@
+import styles from './style.module.css';
 import classNames from 'classnames';
-import styles from '../styles/button.module.css';
 
 type ButtonProps = {
   label: string;

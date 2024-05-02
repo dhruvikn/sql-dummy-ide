@@ -1,4 +1,4 @@
-import styles from '../styles/bodyContainer.module.css';
+import styles from './style.module.css';
 
 type BodyContainerProps = {
   children: React.ReactNode;

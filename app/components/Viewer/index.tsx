@@ -1,11 +1,12 @@
 'use client';
 
-import { AgGridReact } from 'ag-grid-react';
-import { useEffect, useState } from 'react';
-import classNames from 'classnames';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
-import styles from '../styles/viewer.module.css';
+import styles from './style.module.css';
+import { useEffect, useState } from 'react';
+
+import classNames from 'classnames';
+import { AgGridReact } from 'ag-grid-react';
 import { useLocalStorage } from '@uidotdev/usehooks';
 
 type ViewerProps = {

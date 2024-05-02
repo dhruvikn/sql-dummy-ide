@@ -1,12 +1,14 @@
 'use client';
 
+import styles from './style.module.css';
 import { useCallback, useState } from 'react';
-import styles from '../styles/editor.module.css';
+
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { sql } from '@codemirror/lang-sql';
 import { githubLight } from '@uiw/codemirror-theme-github';
-import { SAVED_QUERIES } from '../helpers/constants';
 import { Fira_Mono } from 'next/font/google';
+
+import { SAVED_QUERIES } from '@/app/helpers/constants';
 
 const monoFont = Fira_Mono({ subsets: ['latin'], weight: '500' });
 

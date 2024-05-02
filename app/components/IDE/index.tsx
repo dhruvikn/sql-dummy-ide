@@ -1,4 +1,4 @@
-import styles from '../styles/ide.module.css';
+import styles from './style.module.css';
 
 type IDEProps = {
   children: React.ReactNode;

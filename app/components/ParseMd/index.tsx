@@ -1,4 +1,4 @@
-import styles from '../styles/parseMd.module.css';
+import styles from './style.module.css';
 
 type ParseMdProps = {
   md: string;
