@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import styles from './style.module.css';
 
 type ListItemProps = {
@@ -8,7 +9,12 @@ type ListItemProps = {
 
 const TableIcon = () => {
   return (
-    <span className={styles['icon-table']}>
+    <span
+      className={classNames({
+        [styles['icon--table']]: true,
+        [styles['list-item--icon']]: true
+      })}
+    >
       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
         <path d="M4 8h16V5H4v3zm10 11v-9h-4v9h4zm2 0h4v-9h-4v9zm-8 0v-9H4v9h4zM3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1z"></path>
       </svg>
@@ -18,7 +24,12 @@ const TableIcon = () => {
 
 const QueryIcon = () => {
   return (
-    <span className={styles['icon-query']}>
+    <span
+      className={classNames({
+        [styles['icon--query']]: true,
+        [styles['list-item--icon']]: true
+      })}
+    >
       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
         <path d="M21 4H3v2h18V4zm0 7H8v2h13v-2zm0 7H8v2h13v-2zM5 11H3v9h2v-9z"></path>
       </svg>
@@ -43,7 +54,7 @@ export const ListItem = (props: ListItemProps) => {
     <>
       <li className={styles['list-item']} onClick={handleClick}>
         {getIconType()}
-        {label}
+        <span className={styles['list-item--text']}>{label}</span>
       </li>
     </>
   );

@@ -1,12 +1,13 @@
 'use client';
 
 import styles from './style.module.css';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { sql } from '@codemirror/lang-sql';
 import { githubLight } from '@uiw/codemirror-theme-github';
 import { Fira_Mono } from 'next/font/google';
+import { useLocalStorage } from '@uidotdev/usehooks';
 
 import { SAVED_QUERIES } from '@/app/helpers/constants';
 
@@ -26,17 +27,20 @@ const styleTheme = EditorView.baseTheme({
 });
 
 export const Editor = () => {
-  const [value, setValue] = useState<string>(SAVED_QUERIES[0]);
+  const [queryData, setQueryData] = useLocalStorage<string>('queryData', SAVED_QUERIES[0].query);
 
-  const onChange = useCallback((value: string) => {
-    setValue(value);
-  }, []);
+  const onChange = useCallback(
+    (value: string) => {
+      setQueryData(value);
+    },
+    [setQueryData]
+  );
 
   return (
     <>
       <div className={styles['editor-container']}>
         <CodeMirror
-          value={value}
+          value={queryData}
           style={{ height: '100%' }}
           height={'100%'}
           extensions={[styleTheme, sql()]}

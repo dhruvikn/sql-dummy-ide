@@ -18,16 +18,22 @@
   background-color: rgb(var(--color-fg-1));
 }
 
-.list-item span {
+.list-item--icon {
   display: inline-flex;
   width: 1rem;
   margin-right: 0.5rem;
 }
 
-.list-item span.icon-table {
+.list-item--icon.icon--table {
   color: rgb(var(--color-primary));
 }
 
-.list-item span.icon-query {
+.list-item--icon.icon--query {
   color: rgb(var(--color-secondary));
+}
+
+.list-item--text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
