@@ -7,7 +7,7 @@
   cursor: pointer;
   border-radius: 4px;
   font-weight: var(--font-weight-bold);
-  transition: 0.3s ease-out;
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
   background-color: rgb(var(--color-primary));
   color: rgb(var(--color-white));
 }
@@ -25,4 +25,16 @@
   background-color: transparent;
   color: rgb(var(--color-primary));
   border: 2px solid rgb(var(--color-primary));
+}
+
+.button--sub-text {
+  margin-left: 0.5rem;
+  color: rgb(var(--color-fg-2));
+  font-size: 0.8rem;
+  margin-bottom: -1px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
 }

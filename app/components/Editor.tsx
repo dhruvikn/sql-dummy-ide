@@ -10,8 +10,6 @@ import { Fira_Mono } from 'next/font/google';
 
 const monoFont = Fira_Mono({ subsets: ['latin'], weight: '500' });
 
-console.log(monoFont);
-
 const styleTheme = EditorView.baseTheme({
   '*': {
     fontFamily: `${monoFont.style.fontFamily}, sans-serif !important`,

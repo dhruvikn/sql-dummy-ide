@@ -89,3 +89,13 @@ main {
     transform: translateY(-18em);
   }
 }
+
+.ag-theme-quartz {
+  --ag-borders: none !important;
+  --ag-row-border-style: none;
+  --ag-active-color: rgb(var(--color-primary)) !important;
+  --ag-cell-horizontal-border: var(--ag-row-border-width) var(--ag-row-border-style)
+    var(--ag-row-border-color) !important;
+  --ag-header-column-separator-display: block !important;
+  --ag-header-column-resize-handle-display: none !important;
+}
