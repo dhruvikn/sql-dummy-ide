@@ -49,7 +49,7 @@ body {
 a {
   color: rgb(var(--color-primary));
   text-decoration: underline;
-  transition: 0.3s ease-out;
+  transition: filter 0.3s ease-out;
 }
 
 a:hover {

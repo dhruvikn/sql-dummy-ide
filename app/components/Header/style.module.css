@@ -6,3 +6,15 @@
   padding: 0 1rem;
   height: var(--header-height);
 }
+
+.header--title {
+  font-weight: var(--font-weight-bold);
+  color: rgb(var(--color-primary));
+  font-size: 1.25rem;
+}
+
+.header--subtitle {
+  margin-left: auto;
+  color: rgb(var(--color-fg-2));
+  font-size: 0.9rem;
+}
