@@ -7,7 +7,8 @@
   --color-black: 0, 0, 0; /* #000000 */
   --color-bg: 250, 251, 253; /* #fafbfd */
   --color-fg: 22, 24, 75; /* #16184b */
-  --color-fg-1: 162, 163, 183; /* #a2a3b7 */
+  --color-fg-1: 218, 221, 238; /* #daddee */
+  --color-fg-2: 162, 163, 183; /* #a2a3b7 */
   --color-primary: 33, 53, 155; /* #21359b */
   --color-secondary: 242, 154, 74; /* #f29a4a */
   --color-positive: 21, 218, 136; /* #15da88 */
@@ -16,6 +17,28 @@
   --font-weight-light: 100;
   --font-weight-normal: 400;
   --font-weight-bold: 800;
+
+  --header-height: 58px;
+  --editor-height: 45%;
+  --viewer-height: calc(100% - var(--header-height) - var(--editor-height));
+}
+
+* {
+  outline: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+*:focus {
+  outline: 2px solid rgb(var(--color-secondary), 0.75);
+  border-radius: 4px;
+}
+
+html,
+body,
+main {
+  height: 100%;
 }
 
 body {
@@ -25,14 +48,21 @@ body {
 
 a {
   color: rgb(var(--color-primary));
+  text-decoration: underline;
+  transition: 0.3s ease-out;
 }
 
-a:focus {
-  text-decoration: underline;
+a:hover {
+  filter: saturate(150%);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
 }

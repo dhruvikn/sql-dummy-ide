@@ -1,9 +1,23 @@
-import Image from 'next/image';
+import { Header } from './components/Header';
+import { BodyContainer } from './components/BodyContainer';
+import { Sidebar } from './components/Sidebar';
+import { IDE } from './components/IDE';
+import { Editor } from './components/Editor';
+import { Actions } from './components/Actions';
+import { Viewer } from './components/Viewer';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-9xl">Hello Dhruvik</h1>
+    <main>
+      <Header />
+      <BodyContainer>
+        <Sidebar />
+        <IDE>
+          <Editor />
+          <Actions />
+          <Viewer />
+        </IDE>
+      </BodyContainer>
     </main>
   );
 }

@@ -1,0 +1,5 @@
+.viewer-container {
+  background-color: rgb(var(--color-bg));
+  padding: 1rem;
+  height: var(--viewer-height);
+}

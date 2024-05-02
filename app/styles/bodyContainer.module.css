@@ -1,0 +1,4 @@
+.body-container-container {
+  display: flex;
+  height: calc(100vh - var(--header-height));
+}

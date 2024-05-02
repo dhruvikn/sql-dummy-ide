@@ -1,0 +1,8 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  background-color: rgb(var(--color-white));
+  border-bottom: 2px solid rgb(var(--color-fg-1));
+  padding: 0 1rem;
+  height: var(--header-height);
+}
