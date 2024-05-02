@@ -1,10 +1,12 @@
 'use client';
+
 import { AgGridReact } from 'ag-grid-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
 import styles from '../styles/viewer.module.css';
+import { useLocalStorage } from '@uidotdev/usehooks';
 
 type ViewerProps = {
   gridRef: React.RefObject<AgGridReact>;
@@ -12,19 +14,37 @@ type ViewerProps = {
 
 export const Viewer = (props: ViewerProps) => {
   const { gridRef } = props;
+  const [gridData, setGridData] = useLocalStorage<any[]>('gridData');
 
-  const [rowData, setRowData] = useState<any>([
-    { make: 'Tesla', model: 'Model Y', price: 64950 },
-    { make: 'Ford', model: 'F-Series', price: 33850 },
-    { make: 'Toyota', model: 'Corolla', price: 29600 }
-  ]);
+  const [rowData, setRowData] = useState<any[]>();
+  const [colDefs, setColDefs] = useState<any[]>();
 
-  // Column Definitions: Defines the columns to be displayed.
-  const [colDefs, setColDefs] = useState<any>([
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price' }
-  ]);
+  useEffect(() => {
+    if (gridData?.length) {
+      const columns = Object.keys(gridData[0]).map(col => {
+        return {
+          field: col,
+          headerName: col
+        };
+      });
+
+      setColDefs(columns);
+      setRowData(gridData);
+    }
+  }, [setGridData]);
+
+  if (!rowData?.length || !colDefs?.length) {
+    return (
+      <div
+        className={classNames({
+          [styles['viewer-container']]: true,
+          'd-flex items-center content-center': true
+        })}
+      >
+        <h3 className="text-center">Nothing to show here.</h3>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -34,21 +54,7 @@ export const Viewer = (props: ViewerProps) => {
           'ag-theme-quartz': true
         })}
       >
-        <AgGridReact
-          ref={gridRef}
-          rowData={rowData}
-          columnDefs={colDefs}
-          autoSizeStrategy={{
-            type: 'fitGridWidth',
-            defaultMinWidth: 100,
-            columnLimits: [
-              {
-                colId: 'country',
-                minWidth: 900
-              }
-            ]
-          }}
-        />
+        <AgGridReact ref={gridRef} rowData={rowData} columnDefs={colDefs} />
       </div>
     </>
   );

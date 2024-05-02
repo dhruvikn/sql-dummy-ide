@@ -27,3 +27,19 @@ export const fetchSampleData = async (type: SampleDataType) => {
     return new Error('Failed to fetch data');
   }
 };
+
+export const runQuery = async (
+  setData: (data: any[]) => void,
+  setIsLoading?: (isLoading: boolean) => void
+) => {
+  setIsLoading && setIsLoading(true);
+
+  const data = await fetchSampleData('random');
+
+  if (!data || data instanceof Error) {
+    return;
+  }
+
+  setData(data);
+  setIsLoading && setIsLoading(false);
+};

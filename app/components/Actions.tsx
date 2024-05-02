@@ -1,10 +1,11 @@
 'use client';
 
-import { AgGridReact } from 'ag-grid-react';
 import styles from '../styles/actions.module.css';
+import { AgGridReact } from 'ag-grid-react';
 import { Button } from './Button';
 import { useCallback, useState } from 'react';
-import { fetchSampleData } from '../helpers/utils';
+import { runQuery } from '../helpers/utils';
+import { useLocalStorage } from '@uidotdev/usehooks';
 
 type ActionsProps = {
   gridRef: React.RefObject<AgGridReact>;
@@ -15,14 +16,7 @@ export const Actions = (props: ActionsProps) => {
 
   const [isRunningQuery, setIsRunningQuery] = useState<boolean>(false);
   const [isDownloadingCSV, setIsDownloadingCSV] = useState<boolean>(false);
-
-  const runQuery = async () => {
-    setIsRunningQuery(true);
-
-    const data = await fetchSampleData('random');
-
-    setIsRunningQuery(false);
-  };
+  const [_, setGridData] = useLocalStorage<any[]>('gridData');
 
   const handleDownload = useCallback(() => {
     setIsDownloadingCSV(true);
@@ -40,14 +34,14 @@ export const Actions = (props: ActionsProps) => {
           type="primary"
           label="Run query"
           isLoading={isRunningQuery}
-          onClick={runQuery}
+          onClick={() => runQuery(setGridData, setIsRunningQuery)}
           subText="⌘ + Enter"
         />
 
         <div className="ml-auto">
           <Button
             type="secondary"
-            label="Downlad CSV"
+            label="Download CSV"
             isLoading={isDownloadingCSV}
             onClick={handleDownload}
           />
